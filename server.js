@@ -21,6 +21,8 @@ const session = require("./routes/session");
 const subject = require("./routes/subject");
 const instructor = require("./routes/instructor");
 const centre = require("./routes/centre");
+const student = require("./routes/student");
+const log = require("./routes/log");
 
 //load env vars
 dotenv.config({ path: "./config/config.env" });
@@ -72,6 +74,8 @@ app.use("/api/v1/session/", session);
 app.use("/api/v1/subject", subject);
 app.use("/api/v1/instructor", instructor);
 app.use("/api/v1/centre", centre);
+app.use("/api/v1/student", student);
+app.use("/api/v1/log", log);
 
 app.use(errorHandler);
 
