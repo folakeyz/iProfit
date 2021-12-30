@@ -24,6 +24,10 @@ const SubjectSchema = new mongoose.Schema({
     enum: ["Core", "Elective"],
     default: "Core",
   },
+  instructor: {
+    type: mongoose.Schema.ObjectId,
+    ref: "Instructor",
+  },
   createdAt: {
     type: Date,
     default: Date.now,

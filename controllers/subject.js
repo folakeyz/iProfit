@@ -21,6 +21,22 @@ exports.getSubject = asyncHandler(async (req, res, next) => {
   res.status(200).json(res.advancedResults);
 });
 
+// @desc    Get Trade
+// @route   POST/api/v1/subject
+// @access   Private/Admin
+exports.getSubjectByCentre = asyncHandler(async (req, res, next) => {
+  const subject = await Subject.find({ centre: req.admin.centre })
+    .populate({ path: "centre", select: "name" })
+    .populate({
+      path: "instructor",
+      select: "firstname lastname",
+    });
+  res.status(201).json({
+    success: true,
+    data: subject,
+  });
+});
+
 // @desc    Update Subject
 // @route   PUT/api/v1/Subject/:id
 // @access   Private

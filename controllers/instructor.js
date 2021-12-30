@@ -21,6 +21,17 @@ exports.getInstructor = asyncHandler(async (req, res, next) => {
   res.status(200).json(res.advancedResults);
 });
 
+// @desc    Get Trade
+// @route   POST/api/v1/subject
+// @access   Private/Admin
+exports.getInstructorByCentre = asyncHandler(async (req, res, next) => {
+  const teacher = await Instructor.find({ centre: req.admin.centre });
+  res.status(201).json({
+    success: true,
+    data: teacher,
+  });
+});
+
 // @desc    Login User
 // @route   POST/api/v1/auth/admin/login
 // @access   Public

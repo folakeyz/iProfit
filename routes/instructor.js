@@ -7,6 +7,7 @@ const {
   uploadPhoto,
   deleteAdmin,
   login,
+  getInstructorByCentre,
 } = require("../controllers/instructor");
 const Instructor = require("../models/Instructor");
 const { teacher, protect } = require("../middleware/auth");
@@ -23,6 +24,7 @@ router.route("/:id").delete(protect, deleteAdmin);
 router.route("/login").post(login);
 
 router.route("/me").get(teacher, getMe).put(teacher, updateProfile);
+router.route("/centre").get(protect, getInstructorByCentre);
 router.route("/photo").post(teacher, uploadPhoto);
 
 module.exports = router;
