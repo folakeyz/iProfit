@@ -52,6 +52,21 @@ exports.updateSubject = asyncHandler(async (req, res, next) => {
   });
 });
 
+// @desc    unassign  subjectteacher
+// @route   PUT/api/v1/Subject/:id
+// @access   Private
+
+exports.unassignSubject = asyncHandler(async (req, res, next) => {
+  const subject = await Subject.findByIdAndUpdate(req.body.id, {
+    $unset: { instructor: 1 },
+  });
+
+  res.status(200).json({
+    success: true,
+    data: subject,
+  });
+});
+
 // @desc    Get SubjectBy ID
 // @route   GET/api/v1/Subject/:id
 // @access   Private/Admin

@@ -13,7 +13,7 @@ const Instructor = require("../models/Instructor");
 const { teacher, protect } = require("../middleware/auth");
 const advancedResults = require("../middleware/advancedResults");
 
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
 router
   .route("/")

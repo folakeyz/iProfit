@@ -10,7 +10,7 @@ const Class = require("../models/Class");
 const { protect, authorize } = require("../middleware/auth");
 const advancedResults = require("../middleware/advancedResults");
 
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
 router
   .route("/")
