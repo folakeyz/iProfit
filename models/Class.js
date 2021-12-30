@@ -6,6 +6,11 @@ const ClassSchema = new mongoose.Schema({
     required: [true, "Please add class"],
     unique: true,
   },
+  centre: {
+    type: mongoose.Schema.ObjectId,
+    ref: "Centre",
+    required: true,
+  },
   createdAt: {
     type: Date,
     default: Date.now,

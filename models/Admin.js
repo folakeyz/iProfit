@@ -22,6 +22,11 @@ const AdminSchema = new mongoose.Schema({
     enum: ["SuperAdmin", "Admin"],
     default: "Admin",
   },
+  centre: {
+    type: mongoose.Schema.ObjectId,
+    ref: "Centre",
+    required: true,
+  },
   password: {
     type: String,
     required: [true, "Please add a password"],

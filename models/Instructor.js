@@ -43,6 +43,11 @@ const InstructorSchema = new mongoose.Schema({
   role: {
     type: String,
   },
+  centre: {
+    type: mongoose.Schema.ObjectId,
+    ref: "Centre",
+    required: true,
+  },
   address: {
     type: String,
   },

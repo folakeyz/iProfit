@@ -9,16 +9,16 @@ const {
   login,
 } = require("../controllers/instructor");
 const Instructor = require("../models/Instructor");
-const { teacher } = require("../middleware/auth");
+const { teacher, protect } = require("../middleware/auth");
 const advancedResults = require("../middleware/advancedResults");
 
 const router = express.Router();
 
 router
   .route("/")
-  .post(teacher, createInstructor)
-  .get(teacher, advancedResults(Instructor), getInstructor);
-router.route("/:id").delete(teacher, deleteAdmin);
+  .post(protect, createInstructor)
+  .get(protect, advancedResults(Instructor), getInstructor);
+router.route("/:id").delete(protect, deleteAdmin);
 
 router.route("/login").post(login);
 
